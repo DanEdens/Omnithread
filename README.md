@@ -1,15 +1,15 @@
-# Omnispindle 🌀
+# Omnithread 🌀
 
 **Your Information Conductor for the Madness_Interactive Ecosystem**
 
-Welcome to **Omnispindle**
+Welcome to **Omnithread**
 
 
-## Omnispindle Integration
+## Omnithread Integration
 
-Swarmonomicon now integrates with [Omnispindle](../Omnispindle), a tool for conducting information via MQTT in the Madness_Interactive ecosystem.
+Swarmonomicon now integrates with [Omnithread](../Omnithread), a tool for conducting information via MQTT in the Madness_Interactive ecosystem.
 
-The `omnispindle` module provides an `OmniSpindle` struct that wraps the core Omnispindle functionality:
+The `omnithread` module provides an `Omnithread` struct that wraps the core Omnithread functionality:
 
 - Connecting to an MQTT broker
 - Publishing messages to a topic
@@ -19,7 +19,7 @@ The `omnispindle` module provides an `OmniSpindle` struct that wraps the core Om
 ### Usage
 
 ```rust
-use swarmonomicon::omnispindle::{OmniSpindle, MqttConfig};
+use swarmonomicon::omnithread::{Omnithread, MqttConfig};
 
 let config = MqttConfig {
     host: "localhost".to_string(), 
@@ -27,12 +27,12 @@ let config = MqttConfig {
     client_id: "swarmonomicon".to_string(),
 };
 
-let omnispindle = OmniSpindle::new(config)?;
+let omnithread = Omnithread::new(config)?;
 
-omnispindle.subscribe("swarmonomicon/test")?;
-omnispindle.publish("swarmonomicon/test", "Hello, Swarmonomicon!", true)?;
+omnithread.subscribe("swarmonomicon/test")?;
+omnithread.publish("swarmonomicon/test", "Hello, Swarmonomicon!", true)?;
 
-let msg = omnispindle.receive_message()?;
+let msg = omnithread.receive_message()?;
 println!("Received: {}", msg);
 ```
 
@@ -45,8 +45,8 @@ This integration allows Swarmonomicon to seamlessly interact with the MQTT bus u
 
 ```bash
 # Clone the repository
-git clone https://github.com/DanEdens/Omnispindle
-cd Omnispindle
+git clone https://github.com/DanEdens/Omnithread
+cd Omnithread
 
 # Build Rust binary
 cargo build --release
@@ -61,8 +61,8 @@ source ~/.bashrc
 
 ```powershell
 REM Clone the repository
-git clone https://github.com/DanEdens/Omnispindle
-cd Omnispindle
+git clone https://github.com/DanEdens/Omnithread
+cd Omnithread
 
 REM Build Rust binary
 cargo build --release
@@ -78,7 +78,7 @@ setx PATH "%PATH%;%cd%\target\release"
 
 - `AWSIP`: MQTT broker host (default: "localhost")
 - `AWSPORT`: MQTT broker port (default: 1883)
-- `DENA`: Client ID (default: "omnispindle")
+- `DENA`: Client ID (default: "omnithread")
 
 ## Usage 🚀
 
@@ -86,19 +86,19 @@ setx PATH "%PATH%;%cd%\target\release"
 
 ```bash
 # Get a variable
-omnispindle get --name <name> --topic <topic>
+omnithread get --name <name> --topic <topic>
 
 # Set a variable
-omnispindle set --name <name> --value <value> [--retain]
+omnithread set --name <name> --value <value> [--retain]
 
 # Subscribe to a topic
-omnispindle subscribe --topic <topic> --path <output_path>
+omnithread subscribe --topic <topic> --path <output_path>
 ```
 
 <!-- ### Python API
 
 ```python
-from omnispindle import MqttClient
+from omnithread import MqttClient
 
 # Create client
 client = MqttClient(host="localhost", port=1883, client_id="my-client")
@@ -128,7 +128,7 @@ cargo test
 ### Project Structure
 
 ```
-Omnispindle/
+Omnithread/
 ├── src/                    # Rust source code
 │   ├── main.rs            # CLI entry point
 │   ├── lib.rs             # Core functionality
